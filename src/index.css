@@ -1,0 +1,520 @@
+/* =========================================
+   React Forms UI Kit — Base Styles
+   Author: ThemeForest Author
+   Version: 1.0.0
+   ========================================= */
+
+/* ---- CSS Reset & Base ---- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---- App Shell ---- */
+.app-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* ---- Header ---- */
+.app-header {
+  padding: 18px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  background: var(--header-bg, rgba(255,255,255,0.8));
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.app-logo {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.app-logo span {
+  font-weight: 300;
+  opacity: 0.6;
+}
+
+/* ---- Theme Switcher Bar ---- */
+.theme-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.theme-bar-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-right: 4px;
+}
+
+.theme-dot {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.theme-dot:hover {
+  transform: scale(1.15);
+}
+
+.theme-dot.active {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.25);
+  transform: scale(1.1);
+}
+
+.theme-dot[data-theme="blue"]   { background: #3b82f6; }
+.theme-dot[data-theme="green"]  { background: #10b981; }
+.theme-dot[data-theme="purple"] { background: #8b5cf6; }
+.theme-dot[data-theme="red"]    { background: #ef4444; }
+.theme-dot[data-theme="orange"] { background: #f97316; }
+.theme-dot[data-theme="dark"]   { background: #1e293b; }
+
+/* ---- Main Content ---- */
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 24px;
+  background: var(--app-bg);
+}
+
+/* ---- Form Tabs ---- */
+.form-tabs {
+  display: flex;
+  gap: 6px;
+  background: var(--tab-bg);
+  border-radius: 14px;
+  padding: 6px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+  box-shadow: var(--tab-shadow, 0 2px 8px rgba(0,0,0,0.08));
+  max-width: 560px;
+  width: 100%;
+}
+
+.tab-btn {
+  flex: 1;
+  min-width: 110px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  background: transparent;
+  color: var(--tab-text);
+  white-space: nowrap;
+}
+
+.tab-btn:hover {
+  background: var(--tab-hover);
+  color: var(--primary);
+}
+
+.tab-btn.active {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.35);
+}
+
+/* ---- Form Card ---- */
+.form-card {
+  background: var(--card-bg);
+  border-radius: 24px;
+  padding: 40px 44px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--card-border);
+  animation: cardEnter 0.35s ease forwards;
+}
+
+@keyframes cardEnter {
+  from { opacity: 0; transform: translateY(18px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ---- Form Header ---- */
+.form-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 18px rgba(var(--primary-rgb), 0.35);
+}
+
+.form-icon svg {
+  width: 24px;
+  height: 24px;
+  color: #fff;
+}
+
+.form-title {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+}
+
+.form-subtitle {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 28px;
+  line-height: 1.5;
+}
+
+/* ---- Form Fields ---- */
+.field-group {
+  margin-bottom: 18px;
+}
+
+.field-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  letter-spacing: 0.01em;
+}
+
+.field-input-wrap {
+  position: relative;
+}
+
+.field-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+  opacity: 0.6;
+  pointer-events: none;
+  transition: color 0.2s, opacity 0.2s;
+  display: flex;
+}
+
+.field-icon.top {
+  top: 16px;
+  transform: none;
+}
+
+.field-input,
+.field-textarea {
+  width: 100%;
+  padding: 12px 14px 12px 42px;
+  border: 2px solid var(--input-border);
+  border-radius: 12px;
+  background: var(--input-bg);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.field-input::placeholder,
+.field-textarea::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.5;
+}
+
+.field-input:hover,
+.field-textarea:hover {
+  border-color: var(--input-border-hover);
+}
+
+.field-input:focus,
+.field-textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.12);
+  background: var(--input-bg-focus);
+}
+
+.field-input:focus + .field-icon,
+.field-textarea:focus + .field-icon {
+  color: var(--primary);
+  opacity: 1;
+}
+
+.field-input-wrap:focus-within .field-icon {
+  color: var(--primary);
+  opacity: 1;
+}
+
+.field-textarea {
+  min-height: 110px;
+  padding-top: 12px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+/* Password toggle button */
+.pwd-toggle {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  opacity: 0.5;
+  padding: 0;
+  display: flex;
+  transition: opacity 0.2s;
+}
+
+.pwd-toggle:hover { opacity: 1; }
+
+/* ---- Extras ---- */
+.field-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 12px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  user-select: none;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+.link-text {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.link-text:hover { opacity: 0.75; text-decoration: underline; }
+
+/* ---- Submit Button ---- */
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  letter-spacing: 0.015em;
+  transition: all 0.25s ease;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(var(--primary-rgb), 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.15);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.submit-btn:hover::before { opacity: 1; }
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(var(--primary-rgb), 0.45);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(var(--primary-rgb), 0.3);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ---- Success & Error States ---- */
+.form-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px 0;
+  animation: cardEnter 0.3s ease;
+}
+
+.success-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 24px rgba(var(--primary-rgb), 0.35);
+}
+
+.success-icon svg {
+  width: 30px;
+  height: 30px;
+  color: #fff;
+}
+
+.success-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.success-msg {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.error-text {
+  font-size: 0.76rem;
+  color: var(--error-color, #ef4444);
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ---- Divider ---- */
+.form-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 22px 0;
+}
+
+.form-divider::before,
+.form-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--card-border);
+}
+
+.form-divider span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  opacity: 0.6;
+  white-space: nowrap;
+}
+
+/* ---- Footer link ---- */
+.form-footer-text {
+  text-align: center;
+  margin-top: 22px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+/* ---- Spinner ---- */
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(255,255,255,0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---- App Footer ---- */
+.app-footer {
+  padding: 20px 32px;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  opacity: 0.55;
+  border-top: 1px solid var(--card-border);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 520px) {
+  .app-header { padding: 14px 16px; }
+  .app-main   { padding: 28px 14px; }
+  .form-card  { padding: 28px 22px; border-radius: 18px; }
+  .form-title { font-size: 1.3rem; }
+  .form-tabs  { gap: 4px; padding: 4px; }
+  .tab-btn    { padding: 9px 10px; font-size: 0.76rem; min-width: 85px; }
+}

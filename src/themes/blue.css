@@ -1,0 +1,31 @@
+/* =========================================
+   Theme: Blue (Default)
+   ========================================= */
+
+[data-theme="blue"] {
+  --primary:        #3b82f6;
+  --primary-dark:   #1d4ed8;
+  --primary-rgb:    59, 130, 246;
+
+  --app-bg:         #f0f6ff;
+  --header-bg:      rgba(240, 246, 255, 0.85);
+
+  --card-bg:        #ffffff;
+  --card-border:    rgba(59, 130, 246, 0.12);
+  --card-shadow:    0 8px 32px rgba(59, 130, 246, 0.10), 0 2px 8px rgba(0,0,0,0.06);
+
+  --input-bg:       #f5f9ff;
+  --input-bg-focus: #eef4ff;
+  --input-border:   #e0eaff;
+  --input-border-hover: #bfcffd;
+
+  --tab-bg:         #e8f0fe;
+  --tab-hover:      #dbeafe;
+  --tab-text:       #3b4a6b;
+  --tab-shadow:     0 2px 8px rgba(59, 130, 246, 0.1);
+
+  --text-primary:   #0f172a;
+  --text-secondary: #475569;
+
+  --error-color:    #ef4444;
+}

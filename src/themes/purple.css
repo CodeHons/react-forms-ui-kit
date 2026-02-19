@@ -1,0 +1,31 @@
+/* =========================================
+   Theme: Purple
+   ========================================= */
+
+[data-theme="purple"] {
+  --primary:        #8b5cf6;
+  --primary-dark:   #6d28d9;
+  --primary-rgb:    139, 92, 246;
+
+  --app-bg:         #f5f3ff;
+  --header-bg:      rgba(245, 243, 255, 0.85);
+
+  --card-bg:        #ffffff;
+  --card-border:    rgba(139, 92, 246, 0.12);
+  --card-shadow:    0 8px 32px rgba(139, 92, 246, 0.10), 0 2px 8px rgba(0,0,0,0.06);
+
+  --input-bg:       #faf8ff;
+  --input-bg-focus: #f3eeff;
+  --input-border:   #ede9fe;
+  --input-border-hover: #c4b5fd;
+
+  --tab-bg:         #ede9fe;
+  --tab-hover:      #ddd6fe;
+  --tab-text:       #3b1f80;
+  --tab-shadow:     0 2px 8px rgba(139, 92, 246, 0.1);
+
+  --text-primary:   #0f172a;
+  --text-secondary: #475569;
+
+  --error-color:    #ef4444;
+}

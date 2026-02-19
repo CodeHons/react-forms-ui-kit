@@ -1,0 +1,31 @@
+/* =========================================
+   Theme: Green
+   ========================================= */
+
+[data-theme="green"] {
+  --primary:        #10b981;
+  --primary-dark:   #059669;
+  --primary-rgb:    16, 185, 129;
+
+  --app-bg:         #ecfdf5;
+  --header-bg:      rgba(236, 253, 245, 0.85);
+
+  --card-bg:        #ffffff;
+  --card-border:    rgba(16, 185, 129, 0.12);
+  --card-shadow:    0 8px 32px rgba(16, 185, 129, 0.10), 0 2px 8px rgba(0,0,0,0.06);
+
+  --input-bg:       #f0fdf8;
+  --input-bg-focus: #e6fff5;
+  --input-border:   #d1fae5;
+  --input-border-hover: #6ee7b7;
+
+  --tab-bg:         #d1fae5;
+  --tab-hover:      #a7f3d0;
+  --tab-text:       #1a4d3a;
+  --tab-shadow:     0 2px 8px rgba(16, 185, 129, 0.1);
+
+  --text-primary:   #0f172a;
+  --text-secondary: #475569;
+
+  --error-color:    #ef4444;
+}

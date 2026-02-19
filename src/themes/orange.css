@@ -1,0 +1,31 @@
+/* =========================================
+   Theme: Orange
+   ========================================= */
+
+[data-theme="orange"] {
+  --primary:        #f97316;
+  --primary-dark:   #ea580c;
+  --primary-rgb:    249, 115, 22;
+
+  --app-bg:         #fff7ed;
+  --header-bg:      rgba(255, 247, 237, 0.85);
+
+  --card-bg:        #ffffff;
+  --card-border:    rgba(249, 115, 22, 0.12);
+  --card-shadow:    0 8px 32px rgba(249, 115, 22, 0.10), 0 2px 8px rgba(0,0,0,0.06);
+
+  --input-bg:       #fffaf5;
+  --input-bg-focus: #fff3e0;
+  --input-border:   #fed7aa;
+  --input-border-hover: #fdba74;
+
+  --tab-bg:         #ffedd5;
+  --tab-hover:      #fed7aa;
+  --tab-text:       #7c2d12;
+  --tab-shadow:     0 2px 8px rgba(249, 115, 22, 0.1);
+
+  --text-primary:   #0f172a;
+  --text-secondary: #475569;
+
+  --error-color:    #ef4444;
+}

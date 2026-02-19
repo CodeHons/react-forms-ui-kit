@@ -1,0 +1,47 @@
+/* =========================================
+   Theme: Dark
+   ========================================= */
+
+[data-theme="dark"] {
+  --primary:        #6366f1;
+  --primary-dark:   #4f46e5;
+  --primary-rgb:    99, 102, 241;
+
+  --app-bg:         #0f0f1a;
+  --header-bg:      rgba(15, 15, 26, 0.9);
+
+  --card-bg:        #1a1b2e;
+  --card-border:    rgba(99, 102, 241, 0.15);
+  --card-shadow:    0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(99, 102, 241, 0.06);
+
+  --input-bg:       #131326;
+  --input-bg-focus: #1a1b38;
+  --input-border:   rgba(255, 255, 255, 0.08);
+  --input-border-hover: rgba(99, 102, 241, 0.4);
+
+  --tab-bg:         rgba(255, 255, 255, 0.05);
+  --tab-hover:      rgba(99, 102, 241, 0.15);
+  --tab-text:       rgba(255, 255, 255, 0.7);
+  --tab-shadow:     0 2px 12px rgba(0,0,0,0.4);
+
+  --text-primary:   #f1f5f9;
+  --text-secondary: #94a3b8;
+
+  --error-color:    #f87171;
+}
+
+/* Dark theme input text override */
+[data-theme="dark"] .field-input,
+[data-theme="dark"] .field-textarea {
+  caret-color: #6366f1;
+}
+
+[data-theme="dark"] .field-input::placeholder,
+[data-theme="dark"] .field-textarea::placeholder {
+  color: #64748b;
+  opacity: 1;
+}
+
+[data-theme="dark"] .app-footer {
+  border-color: rgba(255,255,255,0.06);
+}
