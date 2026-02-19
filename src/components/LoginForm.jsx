@@ -30,7 +30,7 @@ export default function LoginForm({
     onSwitch,
     onSubmit,
     title = 'Sign in',
-    subtitle = 'Welcome back — enter your credentials to continue.'
+    subtitle = 'Welcome back - enter your credentials to continue.'
 }) {
     const {
         values, errors, handleChange, validate: runValidation, resetForm

@@ -52,7 +52,7 @@ export default function RegisterForm({
     onSwitch,
     onSubmit,
     title = 'Create account',
-    subtitle = "Join us today — it's free and takes less than a minute."
+    subtitle = "Join us today - it's free and takes less than a minute."
 }) {
     const {
         values, errors, handleChange, validate: runValidation, resetForm
