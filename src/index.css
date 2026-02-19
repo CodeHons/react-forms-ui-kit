@@ -518,6 +518,80 @@ body {
   font-weight: 800;
   font-size: 0.9rem;
 }
+/* ── Social Logins & Extra Links ── */
+.social-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 600;
+  opacity: 0.6;
+}
+.social-divider::before,
+.social-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--input-border);
+}
+
+.social-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid var(--input-border);
+  background: var(--card-bg);
+  color: var(--text-primary);
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+
+.social-btn:hover {
+  background: var(--input-bg);
+  border-color: var(--input-border-hover);
+  transform: translateY(-1px);
+}
+
+.social-btn:active {
+  transform: translateY(0);
+}
+
+.form-toggle-text {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+.tab-link {
+  color: var(--primary);
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 4px;
+  text-decoration: none;
+  transition: var(--transition-base);
+}
+
+.tab-link:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}
 
 .tip-text {
   font-size: 0.85rem;

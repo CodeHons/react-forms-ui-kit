@@ -7,8 +7,10 @@
 
 import { useState } from 'react';
 import { useForm, validateEmail } from '../utils/form-utils';
+import { cn } from '../utils/cn';
 import {
-    IconMail, IconLock, IconEye, IconEyeOff, IconArrow, IconCheck
+    IconMail, IconLock, IconEye, IconEyeOff, IconArrow, IconCheck,
+    IconGoogle, IconGithub
 } from './Icons';
 
 /* ── Validation logic ── */
@@ -23,7 +25,7 @@ const validate = (form) => {
     return err;
 };
 
-export default function LoginForm({ onForgot }) {
+export default function LoginForm({ onForgot, onSwitch }) {
     const {
         values, errors, handleChange, validate: runValidation, resetForm
     } = useForm({ email: '', password: '', remember: false }, validate);
@@ -149,6 +151,24 @@ export default function LoginForm({ onForgot }) {
                         ? <><span className="spinner" /> Signing in…</>
                         : <> Sign in <IconArrow /></>}
                 </button>
+
+                {/* Social Login */}
+                <div style={{ animation: 'slideIn 0.8s ease backwards', animationDelay: '0.4s' }}>
+                    <div className="social-divider">Or continue with</div>
+                    <div className="social-group">
+                        <button type="button" className="social-btn">
+                            <IconGoogle /> Google
+                        </button>
+                        <button type="button" className="social-btn">
+                            <IconGithub /> GitHub
+                        </button>
+                    </div>
+                </div>
+
+                <p className="form-toggle-text" style={{ animation: 'slideIn 0.8s ease backwards', animationDelay: '0.5s' }}>
+                    Don't have an account?
+                    <span className="tab-link" onClick={() => onSwitch('register')}>Sign up</span>
+                </p>
             </form>
         </div>
     );

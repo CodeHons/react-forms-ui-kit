@@ -99,8 +99,8 @@ export default function App() {
 
         {/* Rendered form */}
         <div key={activeTab}>
-          {activeTab === 'login' && <LoginForm onForgot={handleForgot} />}
-          {activeTab === 'register' && <RegisterForm />}
+          {activeTab === 'login' && <LoginForm onForgot={handleForgot} onSwitch={setActiveTab} />}
+          {activeTab === 'register' && <RegisterForm onSwitch={setActiveTab} />}
           {activeTab === 'contact' && <ContactForm />}
           {activeTab === 'forgot' && <ForgotPasswordForm onBack={handleBack} />}
         </div>

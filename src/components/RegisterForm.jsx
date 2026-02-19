@@ -7,8 +7,10 @@
 
 import { useState, useMemo } from 'react';
 import { useForm, validateEmail } from '../utils/form-utils';
+import { cn } from '../utils/cn';
 import {
-    IconUser, IconMail, IconLock, IconEye, IconEyeOff, IconArrow, IconCheck
+    IconUser, IconMail, IconLock, IconEye, IconEyeOff, IconArrow, IconCheck,
+    IconGoogle, IconGithub
 } from './Icons';
 
 /* ── Password strength scorer ── */
@@ -46,7 +48,7 @@ const validate = ({ name, email, password, confirm }) => {
     return err;
 };
 
-export default function RegisterForm() {
+export default function RegisterForm({ onSwitch }) {
     const {
         values, errors, handleChange, validate: runValidation, resetForm
     } = useForm({ name: '', email: '', password: '', confirm: '' }, validate);
@@ -199,6 +201,24 @@ export default function RegisterForm() {
                         ? <><span className="spinner" /> Creating account…</>
                         : <>Create account <IconArrow /></>}
                 </button>
+
+                {/* Social Login */}
+                <div style={{ animation: 'slideIn 0.8s ease backwards', animationDelay: '0.45s' }}>
+                    <div className="social-divider">Or join with</div>
+                    <div className="social-group">
+                        <button type="button" className="social-btn">
+                            <IconGoogle /> Google
+                        </button>
+                        <button type="button" className="social-btn">
+                            <IconGithub /> GitHub
+                        </button>
+                    </div>
+                </div>
+
+                <p className="form-toggle-text" style={{ animation: 'slideIn 0.8s ease backwards', animationDelay: '0.5s' }}>
+                    Already have an account?
+                    <span className="tab-link" onClick={() => onSwitch?.('login')}>Sign in</span>
+                </p>
             </form>
         </div>
     );
