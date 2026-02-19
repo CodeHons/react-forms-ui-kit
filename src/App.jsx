@@ -1,17 +1,13 @@
 /**
  * App.jsx — React Forms UI Kit Demo Shell
- * ──────────────────────────────────────────
- * Features:
- *   - Tab navigation: Login / Register / Contact / Forgot Password
- *   - Theme switcher: 6 color themes via colored dots
- *   - All forms are self-contained with local state
- *   - "Forgot password?" link in LoginForm navigates to ForgotPasswordForm tab
- *   - "Back to sign in" in ForgotPasswordForm navigates back to Login tab
+ * ──────────────────────────────────────────────────────
+ * Refined with premium aesthetics and smoother transitions.
+ * ──────────────────────────────────────────────────────
  */
 
 import { useState, useEffect } from 'react';
 
-/* ── Import themes — order matters: last loaded wins per specificity ── */
+/* ── Import themes ── */
 import './themes/blue.css';
 import './themes/green.css';
 import './themes/purple.css';
@@ -25,43 +21,33 @@ import RegisterForm from './components/RegisterForm';
 import ContactForm from './components/ContactForm';
 import ForgotPasswordForm from './components/ForgotPasswordForm';
 
-/* ─────────────────────────────────
-   App Constants
-───────────────────────────────── */
 const TABS = [
   { id: 'login', label: '🔐 Sign In' },
   { id: 'register', label: '✨ Register' },
   { id: 'contact', label: '💬 Contact' },
-  { id: 'forgot', label: '🔑 Forgot Password' },
+  { id: 'forgot', label: '🔑 Forgot' },
 ];
 
 const THEMES = ['blue', 'green', 'purple', 'red', 'orange', 'dark'];
 
 const THEME_LABELS = {
-  blue: 'Blue',
-  green: 'Green',
-  purple: 'Purple',
-  red: 'Red',
-  orange: 'Orange',
-  dark: 'Dark',
+  blue: 'Modern Blue',
+  green: 'Emerald Green',
+  purple: 'Royal Purple',
+  red: 'Vibrant Red',
+  orange: 'Energetic Orange',
+  dark: 'Midnight Dark',
 };
 
-/* ─────────────────────────────────
-   App Component
-───────────────────────────────── */
 export default function App() {
   const [activeTab, setActiveTab] = useState('login');
   const [activeTheme, setActiveTheme] = useState('blue');
 
-  /* Apply data-theme to <html> so CSS variables cascade globally */
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', activeTheme);
   }, [activeTheme]);
 
-  /* Navigate to "forgot" tab from LoginForm */
   const handleForgot = () => setActiveTab('forgot');
-
-  /* Navigate back to "login" tab from ForgotPasswordForm */
   const handleBack = () => setActiveTab('login');
 
   return (
@@ -70,24 +56,23 @@ export default function App() {
       {/* ── Header ── */}
       <header className="app-header">
         <div className="app-logo">
-          {/* Small logo mark */}
-          <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="30" height="30" rx="8" fill="var(--primary)" />
-            <path d="M8 15h14M15 8l7 7-7 7" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="10" fill="var(--primary)" />
+            <path d="M9 16h14M16 9l7 7-7 7" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-          FormsKit <span>UI Kit</span>
+          FormsKit <span>v1.1</span>
         </div>
 
         {/* Theme dots */}
         <nav className="theme-bar" aria-label="Color theme selector">
-          <span className="theme-bar-label">Theme</span>
+          <span className="theme-bar-label">Appearance</span>
           {THEMES.map(theme => (
             <button
               key={theme}
               className={`theme-dot${activeTheme === theme ? ' active' : ''}`}
               data-theme={theme}
               onClick={() => setActiveTheme(theme)}
-              aria-label={`Switch to ${THEME_LABELS[theme]} theme`}
+              aria-label={`Switch to ${THEME_LABELS[theme]}`}
               title={THEME_LABELS[theme]}
             />
           ))}
@@ -98,7 +83,7 @@ export default function App() {
       <main className="app-main">
 
         {/* Form tabs */}
-        <nav className="form-tabs" role="tablist" aria-label="Form navigation">
+        <nav className="form-tabs" role="tablist">
           {TABS.map(tab => (
             <button
               key={tab.id}
@@ -112,17 +97,19 @@ export default function App() {
           ))}
         </nav>
 
-        {/* Rendered form — key forces re-mount animation on tab change */}
-        {activeTab === 'login' && <LoginForm key="login" onForgot={handleForgot} />}
-        {activeTab === 'register' && <RegisterForm key="register" />}
-        {activeTab === 'contact' && <ContactForm key="contact" />}
-        {activeTab === 'forgot' && <ForgotPasswordForm key="forgot" onBack={handleBack} />}
+        {/* Rendered form */}
+        <div key={activeTab}>
+          {activeTab === 'login' && <LoginForm onForgot={handleForgot} />}
+          {activeTab === 'register' && <RegisterForm />}
+          {activeTab === 'contact' && <ContactForm />}
+          {activeTab === 'forgot' && <ForgotPasswordForm onBack={handleBack} />}
+        </div>
 
       </main>
 
       {/* ── Footer ── */}
       <footer className="app-footer">
-        React Authentication &amp; Contact Forms UI Kit — ThemeForest ©{new Date().getFullYear()}
+        Premium React Forms UI Kit • ThemeForest Edition • ©{new Date().getFullYear()}
       </footer>
 
     </div>
