@@ -25,7 +25,13 @@ const validate = (form) => {
     return err;
 };
 
-export default function LoginForm({ onForgot, onSwitch }) {
+export default function LoginForm({
+    onForgot,
+    onSwitch,
+    onSubmit,
+    title = 'Sign in',
+    subtitle = 'Welcome back — enter your credentials to continue.'
+}) {
     const {
         values, errors, handleChange, validate: runValidation, resetForm
     } = useForm({ email: '', password: '', remember: false }, validate);
@@ -34,15 +40,24 @@ export default function LoginForm({ onForgot, onSwitch }) {
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (!runValidation()) return;
 
         setLoading(true);
-        setTimeout(() => {
-            setLoading(false);
+        try {
+            if (onSubmit) {
+                await onSubmit(values);
+            } else {
+                // Mock delay
+                await new Promise(res => setTimeout(res, 1400));
+            }
             setSuccess(true);
-        }, 1400);
+        } catch (err) {
+            console.error('Login failed:', err);
+        } finally {
+            setLoading(false);
+        }
     };
 
     const handleReset = () => {
@@ -72,8 +87,8 @@ export default function LoginForm({ onForgot, onSwitch }) {
             <div className="form-icon">
                 <IconLock />
             </div>
-            <h1 className="form-title">Sign in</h1>
-            <p className="form-subtitle">Welcome back — enter your credentials to continue.</p>
+            <h1 className="form-title">{title}</h1>
+            <p className="form-subtitle">{subtitle}</p>
 
             <form onSubmit={handleSubmit} noValidate>
                 {/* Email */}

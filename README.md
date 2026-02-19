@@ -1,139 +1,158 @@
-# React Authentication & Contact Forms UI Kit v1.1
+# Premium React Authentication & Contact Forms UI Kit
+[![React Version](https://img.shields.io/badge/React-19.0.0-61DAFB?logo=react&logoColor=white)](https://react.dev/)
+[![Vite Version](https://img.shields.io/badge/Vite-7.0.0-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Version](https://img.shields.io/badge/Version-1.1.0-blue.svg)]()
+[![License](https://img.shields.io/badge/License-ThemeForest-green.svg)]()
 
-![Version](https://img.shields.io/badge/version-1.1.0-blue)
-![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
-![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite)
-![Aesthetics](https://img.shields.io/badge/UI-Premium-FF69B4)
-![License](https://img.shields.io/badge/license-Regular-orange)
-
-> **A professional, ThemeForest-ready React UI Kit** featuring 4 highly polished forms, 6 dynamic color themes, and a modern refactored architecture using custom hooks and centralized utilities.
+A high-end, production-ready collection of form components designed with precision, performance, and developer experience in mind. Perfect for SaaS, Dashboards, and Modern Landing Pages.
 
 ---
 
-## ✨ Key Enhancements in v1.1
-
-- **Refactored Architecture**: Moved repetitive logic into a centralized `useForm` custom hook for better maintainability.
-- **Advanced UI**: Implemented **Glassmorphism** in the header and **Staggered Entrance Animations** for all form elements.
-- **Centralized Assets**: Consolidated all SVG icons into a single, optimized `Icons.jsx` component.
-- **Premium Aesthetics**: Refined typography, smooth transitions, and polished shadows for a high-end feel.
-
----
-
-## 🚀 Features
-
-| Category | Highlights |
-|---|---|
-| **Form Collection** | Login, Professional Register, Contact (with counter), Secure Forgot Password |
-| **Theming System** | 6 Built-in Themes (Blue, Green, Purple, Red, Orange, Dark) driven by CSS variables |
-| **UX & Motion** | Staggered animations, glassmorphism, instant theme switching, loading spinners |
-| **Social Login** | Google & GitHub buttons (pre-styled) |
-| **Navigator** | Smooth cross-form navigation links (Sign In ↔ Sign Up) |
-| **Logic & Validation** | Centralized `useForm` hook, custom validation, password strength meter |
-| **Responsive Design** | Mobile-first approach, fluid layouts for all devices |
-| **Tech Blueprint** | React 19 + Vite 7 + Vanilla CSS (Zero External Dependencies) |
+## ✨ Key Highlights
+*   **Premium Aesthetics**: Modern glassmorphism, organic layered shadows, and fluid staggered animations.
+*   **Zero Dependencies**: Built with pure React 19 and Vanilla CSS. No bulky UI libraries (Tailwind/Bootstrap) required.
+*   **Theme Engine**: 6 hand-crafted color themes driven by modular CSS variables.
+*   **Developer First**: Centralized `useForm` custom hook for complex state logic and validation.
+*   **Ready for Social**: Integrated Google and GitHub login UI.
+*   **SEO & Accessibility**: Semantic HTML5 with focus management and ARIA labels.
 
 ---
 
-## 🏗️ Project Architecture
+## 🛠 Tech Stack
+- **Framework**: React 19 (Functional Components)
+- **Bundler**: Vite 7 (Lightning fast development & optimized build)
+- **Styling**: Vanilla CSS (CSS Variables / Custom Properties)
+- **Icons**: Optimized SVG React Components
 
+---
+
+## 🚀 Quick Start
+
+### 1. Installation
 ```bash
-src/
-├── components/
-│   ├── LoginForm.jsx          # Refactored Login logic
-│   ├── RegisterForm.jsx       # Signup with Strength Meter
-│   ├── ContactForm.jsx        # Contact with Char Counter
-│   ├── ForgotPasswordForm.jsx # Secure Reset Flow
-│   └── Icons.jsx              # Optimized Centralized SVGs
-├── utils/                     # Shared Logic
-│   ├── form-utils.js          # useForm hook + Validation
-│   └── cn.js                  # Classname merging utility
-├── themes/                    # CSS Variable Collections
-│   ├── blue.css, green.css, etc.
-├── App.jsx                    # Application Shell & Theme Engine
-└── index.css                  # Core Design System & Global Styles
-```
-
----
-
-## ⚡ Quick Start
-
-```bash
-# Clone or Unzip the project
-cd react-forms-ui-kit
-
-# Install premium dependencies
+# Extract the package and install dependencies
 npm install
 
-# Launch development server
+# Start development server
 npm run dev
 ```
 
-Visit `http://localhost:5173` to explore the live interactive demo.
+### 2. Basic Usage
+```jsx
+import LoginForm from './components/LoginForm';
+
+function App() {
+  const handleLogin = async (data) => {
+    // Connect to your API here
+    console.log('Logging in with:', data);
+  };
+
+  return (
+    <LoginForm 
+      onSubmit={handleLogin} 
+      title="Welcome Back" 
+    />
+  );
+}
+```
 
 ---
 
-## 🛠️ Developer Guide
+## 📖 Component API Reference
 
-### Using the `useForm` Hook
+All components are fully standardized with the following props for maximum flexibility:
 
-The kit now features a powerful `useForm` utility that handles state, input changes, and validation automatically.
+### `LoginForm`
+| Prop | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `title` | `string` | `"Sign in"` | Main heading for the form. |
+| `subtitle` | `string` | `"Welcome back..."` | Descriptive text below the title. |
+| `onSubmit` | `async func` | `Mock Delay` | Async function receiving form `{ email, password, remember }`. |
+| `onForgot` | `func` | `null` | Triggered when "Forgot password?" is clicked. |
+| `onSwitch` | `func` | `null` | Triggered for navigation to registration. |
 
+### `RegisterForm`
+| Prop | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `title` | `string` | `"Create account"` | Main heading for the registration form. |
+| `subtitle` | `string` | `"Join us today..."` | Secondary descriptive text. |
+| `onSubmit` | `async func` | `Mock Delay` | Async function receiving `{ name, email, password, confirm }`. |
+| `onSwitch` | `func` | `null` | Triggered for navigation to login. |
+
+### `ContactForm`
+| Prop | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `title` | `string` | `"Get in touch"` | Main heading for the contact form. |
+| `subtitle` | `string` | `"We'd love to..."` | Secondary descriptive text. |
+| `onSubmit` | `async func` | `Mock Delay` | Async function receiving `{ name, email, subject, message }`. |
+
+### `ForgotPasswordForm`
+| Prop | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `title` | `string` | `"Forgot password?"`| Main heading for the reset flow. |
+| `subtitle` | `string` | `"No worries!..."` | Secondary descriptive text. |
+| `onSubmit` | `async func` | `Mock Delay` | Async function receiving `{ email }`. |
+| `onBack` | `func` | `null` | Triggered to return to the sign-in screen. |
+
+---
+
+## 🎨 Customization Engine
+
+### 1. Theming (CSS Variables)
+Global variables are located in `index.css`, while themes are in `src/themes/*.css`. To create a new theme:
+1. Create `new-theme.css`.
+2. Define the palette:
+```css
+[data-theme="new-theme"] {
+  --primary: #your-color;
+  --primary-rgb: x, y, z;
+  --app-bg: #...;
+  /* ... copy other variables from blue.css */
+}
+```
+
+### 2. Validation Logic
+Validation rules are centralized in each component for easy editing. To add a custom rule:
+1. Open the form component (e.g., `RegisterForm.jsx`).
+2. Update the `validate` function:
 ```javascript
-import { useForm } from '../utils/form-utils';
-
-const validate = (values) => {
-  const errors = {};
-  if (!values.email) errors.email = 'Required';
-  return errors;
+const validate = (form) => {
+    const err = {};
+    if (form.password.length < 12) {
+        err.password = 'Security policy: Password must be 12+ chars.';
+    }
+    return err;
 };
-
-const { values, errors, handleChange, validate: runValidation } = useForm({ email: '' }, validate);
-```
-
-### Adding a New Theme
-
-1. Create a new CSS file in `src/themes/`.
-2. Define your color palette using the existing CSS variables (e.g., `--primary`, `--app-bg`).
-3. Import the file in `App.jsx` and add it to the `THEMES` array.
-
----
-
-## 🎨 Design System (CSS Variables)
-
-We use a clean, variable-driven approach for theming:
-
-| Variable | Purpose |
-|---|---|
-| `--primary` | Main brand accent color |
-| `--app-bg` | Global application background |
-| `--card-bg` | Glassmorphic or solid card backgrounds |
-| `--transition-base` | Standard 0.3s cubic-bezier motion |
-| `--card-shadow` | Premium elevation effects |
-
----
-
-## � Production Ready
-
-This UI kit is optimized for performance and ready for deployment.
-
-```bash
-npm run build
 ```
 
 ---
 
-## 📄 License
-
-**Regular License** — For one end product (personal or commercial).  
-**Extended License** — For use in SaaS or products sold to multiple clients.
+## 📁 Project Architecture
+```text
+src/
+├── components/       # Visual components & Icons
+│   ├── Icons.jsx     # Centralized SVG registry
+│   └── ...Form.jsx   # Standalone form components
+├── themes/           # CSS Theme definitions
+├── utils/            # Logic & Helper functions
+│   ├── cn.js         # Conditional class utility
+│   └── form-utils.js # Custom useForm hook
+├── App.jsx           # Demo implementation shell
+└── index.css         # Base design system & micro-interactions
+```
 
 ---
 
-## 🙏 Credits
-
-- **Fonts:** [Inter](https://fonts.google.com/specimen/Inter) by Google Fonts  
-- **Icons:** Centralized SVG (No external dependency)
+## 📦 Production Readiness
+Built for scale and performance:
+- **Optimization**: Run `npm run build` for a highly minified, chunk-split distribution.
+- **Fast Refresh**: Instant feedback during development via Vite.
+- **Micro-Scale Icons**: All icons are lightweight inline SVGs, reducing HTTP requests.
 
 ---
 
-*Made with ❤️ for developers by **ThemeForest Author**. If you love this product, please rate us ⭐⭐⭐⭐⭐!*
+## 🤝 Support & License
+- **Support**: For bugs or customization requests, please contact the author via ThemeForest.
+- **License**: Regular or Extended License applies based on your purchase.
+
+© 2026 ThemeForest Author. All rights reserved.

@@ -48,7 +48,12 @@ const validate = ({ name, email, password, confirm }) => {
     return err;
 };
 
-export default function RegisterForm({ onSwitch }) {
+export default function RegisterForm({
+    onSwitch,
+    onSubmit,
+    title = 'Create account',
+    subtitle = "Join us today — it's free and takes less than a minute."
+}) {
     const {
         values, errors, handleChange, validate: runValidation, resetForm
     } = useForm({ name: '', email: '', password: '', confirm: '' }, validate);
@@ -60,12 +65,23 @@ export default function RegisterForm({ onSwitch }) {
 
     const strength = useMemo(() => getStrength(values.password), [values.password]);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (!runValidation()) return;
 
         setLoading(true);
-        setTimeout(() => { setLoading(false); setSuccess(true); }, 1400);
+        try {
+            if (onSubmit) {
+                await onSubmit(values);
+            } else {
+                await new Promise(res => setTimeout(res, 1400));
+            }
+            setSuccess(true);
+        } catch (err) {
+            console.error('Registration failed:', err);
+        } finally {
+            setLoading(false);
+        }
     };
 
     const handleReset = () => {
@@ -95,8 +111,8 @@ export default function RegisterForm({ onSwitch }) {
             <div className="form-icon">
                 <IconUser />
             </div>
-            <h1 className="form-title">Create account</h1>
-            <p className="form-subtitle">Join us today — it's free and takes less than a minute.</p>
+            <h1 className="form-title">{title}</h1>
+            <p className="form-subtitle">{subtitle}</p>
 
             <form onSubmit={handleSubmit} noValidate>
                 {/* Full Name */}

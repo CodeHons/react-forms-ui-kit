@@ -27,7 +27,11 @@ const validate = ({ name, email, message }) => {
     return err;
 };
 
-export default function ContactForm() {
+export default function ContactForm({
+    onSubmit,
+    title = 'Get in touch',
+    subtitle = "We'd love to hear from you. Fill out the form and we'll respond shortly."
+}) {
     const {
         values, errors, handleChange: baseHandleChange, validate: runValidation, resetForm
     } = useForm({ name: '', email: '', subject: '', message: '' }, validate);
@@ -42,12 +46,23 @@ export default function ContactForm() {
         baseHandleChange(e);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (!runValidation()) return;
 
         setLoading(true);
-        setTimeout(() => { setLoading(false); setSuccess(true); }, 1500);
+        try {
+            if (onSubmit) {
+                await onSubmit(values);
+            } else {
+                await new Promise(res => setTimeout(res, 1500));
+            }
+            setSuccess(true);
+        } catch (err) {
+            console.error('Contact failed:', err);
+        } finally {
+            setLoading(false);
+        }
     };
 
     const handleReset = () => {
@@ -79,8 +94,8 @@ export default function ContactForm() {
             <div className="form-icon">
                 <IconMessage />
             </div>
-            <h1 className="form-title">Get in touch</h1>
-            <p className="form-subtitle">We'd love to hear from you. Fill out the form and we'll respond shortly.</p>
+            <h1 className="form-title">{title}</h1>
+            <p className="form-subtitle">{subtitle}</p>
 
             <form onSubmit={handleSubmit} noValidate>
                 {/* Name */}

@@ -19,7 +19,12 @@ const validate = ({ email }) => {
     return err;
 };
 
-export default function ForgotPasswordForm({ onBack }) {
+export default function ForgotPasswordForm({
+    onBack,
+    onSubmit,
+    title = 'Forgot password?',
+    subtitle = "No worries! Enter your email and we'll send you a secure reset link."
+}) {
     const {
         values, errors, handleChange, validate: runValidation, resetForm
     } = useForm({ email: '' }, validate);
@@ -27,12 +32,23 @@ export default function ForgotPasswordForm({ onBack }) {
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (!runValidation()) return;
 
         setLoading(true);
-        setTimeout(() => { setLoading(false); setSuccess(true); }, 1400);
+        try {
+            if (onSubmit) {
+                await onSubmit(values);
+            } else {
+                await new Promise(res => setTimeout(res, 1400));
+            }
+            setSuccess(true);
+        } catch (err) {
+            console.error('Password reset failed:', err);
+        } finally {
+            setLoading(false);
+        }
     };
 
     const handleTryAgain = () => {
@@ -85,10 +101,8 @@ export default function ForgotPasswordForm({ onBack }) {
             <div className="form-icon">
                 <IconKey />
             </div>
-            <h1 className="form-title">Forgot password?</h1>
-            <p className="form-subtitle">
-                No worries! Enter your email and we'll send you a secure reset link.
-            </p>
+            <h1 className="form-title">{title}</h1>
+            <p className="form-subtitle">{subtitle}</p>
 
             <form onSubmit={handleSubmit} noValidate>
                 {/* Email */}
